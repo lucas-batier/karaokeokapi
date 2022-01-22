@@ -25,7 +25,7 @@ for row in rows:
         )
 
         if not response.ok:
-            print('ERROR: Failed to create artist %s: %s' % (artist_name, response.content))
+            print('WARNING: Failed to create artist %s: %s' % (artist_name, response.content))
             continue
 
         artist = response.json()
