@@ -10,7 +10,6 @@ from .models import Artist, Song
 
 
 class ArtistView(viewsets.ModelViewSet):
-    permission_classes = (AllowAny, )
     serializer_class = ArtistSerializer
     queryset = Artist.objects.all()
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend]
@@ -20,7 +19,6 @@ class ArtistView(viewsets.ModelViewSet):
 
 
 class SongView(viewsets.ModelViewSet):
-    permission_classes = (AllowAny, )  # @todo remove this
     serializer_class = SongSerializer
     queryset = Song.objects.all().prefetch_related('artist', 'featuring_artist')
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend, SearchFilter]
