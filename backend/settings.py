@@ -134,6 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://172.20.10.11:3000',
+    'http://karaokeok.herokuapp.com',
     'https://karaokeok.herokuapp.com',
 ]
 

@@ -68,3 +68,32 @@ class SongSerializer(serializers.ModelSerializer):
         model = Song
         fields = ('id', 'uuid', 'title', 'artist', 'featuring_artist', 'youtube_url', 'thumbnail_url', 'created_at')
         read_only_fields = ('created_at', )
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'is_active',
+            'is_staff',
+            'is_superuser',
+            'last_login',
+            'date_joined',
+        )
+        read_only_fields = (
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'is_active',
+            'is_staff',
+            'is_superuser',
+            'last_login',
+            'date_joined',
+        )

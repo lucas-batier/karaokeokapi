@@ -22,10 +22,12 @@ from karaokeok import views
 router = routers.DefaultRouter()
 router.register(r'songs', views.SongView, 'song')
 router.register(r'artists', views.ArtistView, 'artist')
+router.register(r'users', views.UserView, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('login/', authtoken_views.obtain_auth_token),
     path('register/', views.RegisterView.as_view()),
+    path('users/me/', views.CurrentUserView.as_view()),
 ]
