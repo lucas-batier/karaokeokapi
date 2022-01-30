@@ -86,3 +86,10 @@ class UserSerializer(serializers.ModelSerializer):
             'date_joined',
         )
         read_only_fields = ('id', 'is_active', 'is_staff', 'is_superuser', 'last_login', 'date_joined')
+
+
+class NoInfoUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+        read_only_fields = ('id', 'username')

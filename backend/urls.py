@@ -29,5 +29,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('login/', authtoken_views.obtain_auth_token),
     path('register/', views.RegisterView.as_view()),
-    path('users/me/', views.CurrentUserView.as_view()),
+    path('users/me/', views.RetrieveCurrentUserView.as_view()),
+    path('users_no_info/', views.ListUserView.as_view()),
 ]
