@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 
 from .filters import CaseInsensitiveOrderingFilter
-from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer, NoInfoUserSerializer
+from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer
 from .models import Artist, Song
 
 
@@ -50,7 +50,7 @@ class RetrieveCurrentUserView(generics.CreateAPIView):
 
 class ListUserView(generics.ListAPIView):
     permission_classes = (AllowAny, )
-    serializer_class = NoInfoUserSerializer
+    serializer_class = UserSerializer
 
     def get_queryset(self):
         queryset = User.objects.all()
