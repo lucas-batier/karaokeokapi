@@ -25,10 +25,11 @@ router.register(r'artists', views.ArtistView, 'artist')
 router.register(r'users', views.UserView, 'user')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('login/', authtoken_views.obtain_auth_token),
-    path('register/', views.RegisterView.as_view()),
-    path('users/me/', views.RetrieveCurrentUserView.as_view()),
-    path('users/', views.ListUserView.as_view()),
+    path('api/login/', authtoken_views.obtain_auth_token),
+    path('api/register/', views.RegisterView.as_view()),
+    path('api/users/me/', views.RetrieveCurrentUserView.as_view()),
+    path('api/users/', views.ListUserView.as_view()),
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]

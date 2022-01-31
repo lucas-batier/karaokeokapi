@@ -1,3 +1,4 @@
+from django.core.mail import EmailMessage
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import AllowAny
@@ -58,3 +59,19 @@ class ListUserView(generics.ListAPIView):
         if username is not None:
             queryset = queryset.filter(username=username)
         return queryset
+
+
+def send_email(request):
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password_confirmation']:
+            raise serializers.ValidationError({"password": "Password fields didn't match."})
+
+        return attrs
+
+    email = EmailMessage(
+        request.body.get('subject'),
+        (ConsultSerializer.name, ConsultSerializer.email, ConsultSerializer.phone),
+        'my-email',
+        ['my-receive-email']
+    )
+    email.send()
