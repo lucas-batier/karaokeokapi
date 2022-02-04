@@ -27,7 +27,7 @@ class SongView(viewsets.ModelViewSet):
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend, SearchFilter]
     ordering_fields = ['title', 'created_at', 'artist__name']
     filterset_fields = ['artist', 'featuring_artist']
-    search_fields = ['title', 'artist__name', 'featuring_artist__name']
+    search_fields = ['@title', '@artist__name', '@featuring_artist__name']
 
 
 class RegisterView(generics.CreateAPIView):
