@@ -1,7 +1,6 @@
-from django.core.mail import EmailMessage
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -12,6 +11,7 @@ from .models import Artist, Song
 
 
 class ArtistView(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     serializer_class = ArtistSerializer
     queryset = Artist.objects.all()
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend]
@@ -21,6 +21,7 @@ class ArtistView(viewsets.ModelViewSet):
 
 
 class SongView(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     serializer_class = SongSerializer
     queryset = Song.objects.all().prefetch_related('artist', 'featuring_artist')
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend, SearchFilter]
@@ -44,13 +45,14 @@ class UserView(viewsets.ModelViewSet):
 
 
 class RetrieveCurrentUserView(generics.CreateAPIView):
+    permission_classes = (IsAuthenticated, )
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
 
 class ListUserView(generics.ListAPIView):
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -59,19 +61,3 @@ class ListUserView(generics.ListAPIView):
         if username is not None:
             queryset = queryset.filter(username=username)
         return queryset
-
-
-def send_email(request):
-    def validate(self, attrs):
-        if attrs['password'] != attrs['password_confirmation']:
-            raise serializers.ValidationError({"password": "Password fields didn't match."})
-
-        return attrs
-
-    email = EmailMessage(
-        request.body.get('subject'),
-        (ConsultSerializer.name, ConsultSerializer.email, ConsultSerializer.phone),
-        'my-email',
-        ['my-receive-email']
-    )
-    email.send()

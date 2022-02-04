@@ -23,7 +23,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     # send an e-mail to the user
     context = {
         'first_name': reset_password_token.user.first_name,
-        'reset_password_url': "{}/reset_password?token={}".format(
+        'reset_password_url': "{}/reset_password{}".format(
             FRONT_APP_URL,
             reset_password_token.key),
         'app_url': FRONT_APP_URL,
