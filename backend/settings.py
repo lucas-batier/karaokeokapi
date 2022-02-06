@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-import dj_database_url
 import dotenv
 import django_heroku
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.postgres',
     'django.contrib.staticfiles',
     'django_filters',
     'corsheaders',
@@ -89,7 +89,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'karaokeok',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -161,6 +170,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 
-# Do not use ssl on local sqlite database
+# Do not use ssl on local database
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)

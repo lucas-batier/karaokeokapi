@@ -1,3 +1,5 @@
+from django.contrib.postgres.search import SearchVector
+from django.views.generic import ListView
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAuthenticated
@@ -27,7 +29,7 @@ class SongView(viewsets.ModelViewSet):
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend, SearchFilter]
     ordering_fields = ['title', 'created_at', 'artist__name']
     filterset_fields = ['artist', 'featuring_artist']
-    search_fields = ['@title', '@artist__name', '@featuring_artist__name']
+    search_fields = ['title', 'artist__name', 'featuring_artist__name']
 
 
 class RegisterView(generics.CreateAPIView):

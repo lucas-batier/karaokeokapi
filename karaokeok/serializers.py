@@ -49,7 +49,7 @@ class ArtistSerializer(serializers.ModelSerializer):
         fields = ('id', 'uuid', 'name')
 
 
-class SongSerializer(serializers.ModelSerializer):
+class  SongSerializer(serializers.ModelSerializer):
     artist = serializers.SlugRelatedField(
         queryset=Artist.objects.all(),
         read_only=False,

@@ -36,7 +36,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     message = EmailMultiAlternatives(
         subject="{title} 🎤 Réinitialisation de mot de passe".format(title="KaraokeOK"),
         body=email_plaintext_message,
-        from_email=EMAIL_HOST_USER,
+        from_email='Fred de KaraokeOK',
         to=[reset_password_token.user.email]
     )
     message.attach_alternative(email_html_message, "text/html")
