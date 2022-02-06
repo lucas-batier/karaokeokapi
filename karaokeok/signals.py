@@ -34,14 +34,10 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     email_plaintext_message = render_to_string('email/reset_password.txt', context)
 
     message = EmailMultiAlternatives(
-        # title:
-        "{title} 🎤 Réinitialisation de mot de passe".format(title="KaraokeOK"),
-        # message:
-        email_plaintext_message,
-        # from:
-        EMAIL_HOST_USER,
-        # to:
-        [reset_password_token.user.email]
+        subject="{title} 🎤 Réinitialisation de mot de passe".format(title="KaraokeOK"),
+        body=email_plaintext_message,
+        from_email=EMAIL_HOST_USER,
+        to=[reset_password_token.user.email]
     )
     message.attach_alternative(email_html_message, "text/html")
     message.send()
