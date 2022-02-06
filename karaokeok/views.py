@@ -1,4 +1,6 @@
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.operations import UnaccentExtension
+from django.contrib.postgres.search import SearchVector, SearchRank, SearchQuery
+from django.db import migrations
 from django.views.generic import ListView
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter
@@ -13,7 +15,7 @@ from .models import Artist, Song
 
 
 class ArtistView(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = ArtistSerializer
     queryset = Artist.objects.all()
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend]
@@ -23,7 +25,7 @@ class ArtistView(viewsets.ModelViewSet):
 
 
 class SongView(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = SongSerializer
     queryset = Song.objects.all().prefetch_related('artist', 'featuring_artist')
     filter_backends = [CaseInsensitiveOrderingFilter, DjangoFilterBackend, SearchFilter]
@@ -36,22 +38,27 @@ class ListSongSearchView(generics.ListAPIView):
     serializer_class = SongSerializer
 
     def get_queryset(self):
-        queryset = Song.objects.all()
-        text = self.request.query_params.get('text')
-        queryset = queryset.annotate(search=SearchVector('title', 'artist__name', 'featuring_artist__name')).filter(
-            search=text
-        )
+        queryset = Song.objects.all().prefetch_related('artist', 'featuring_artist')
+
+        search_query = SearchQuery(self.request.query_params.get('text'), config='french')
+        search_vector = SearchVector('title__unaccent', weight='A', config='french') + \
+                        SearchVector('artist__name__unaccent', weight='A', config='french') + \
+                        SearchVector('featuring_artist__name__unaccent', weight='C', config='french')
+        queryset = queryset.annotate(search=search_vector, rank=SearchRank(search_vector, search_query))\
+            .filter(search=search_query)\
+            .order_by("-rank")
+
         return queryset
 
 
 class RegisterView(generics.CreateAPIView):
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
     queryset = User.objects.all()
 
 
 class UserView(viewsets.ModelViewSet):
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
     serializer_class = UserSerializer
     queryset = User.objects.all()
     filter_backends = [DjangoFilterBackend]
@@ -59,8 +66,9 @@ class UserView(viewsets.ModelViewSet):
 
 
 class RetrieveCurrentUserView(generics.CreateAPIView):
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         serializer = UserSerializer(request.user)
+
         return Response(serializer.data)
