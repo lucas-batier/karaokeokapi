@@ -32,6 +32,18 @@ class SongView(viewsets.ModelViewSet):
     search_fields = ['title', 'artist__name', 'featuring_artist__name']
 
 
+class ListSongSearchView(generics.ListAPIView):
+    serializer_class = SongSerializer
+
+    def get_queryset(self):
+        queryset = Song.objects.all()
+        text = self.request.query_params.get('text')
+        queryset = queryset.annotate(search=SearchVector('title', 'artist__name', 'featuring_artist__name')).filter(
+            search=text
+        )
+        return queryset
+
+
 class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny, )
     serializer_class = RegisterSerializer
@@ -48,18 +60,7 @@ class UserView(viewsets.ModelViewSet):
 
 class RetrieveCurrentUserView(generics.CreateAPIView):
     permission_classes = (IsAuthenticated, )
+
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
-
-
-class ListUserView(generics.ListAPIView):
-    permission_classes = (IsAuthenticated, )
-    serializer_class = UserSerializer
-
-    def get_queryset(self):
-        queryset = User.objects.all()
-        username = self.request.query_params.get('username')
-        if username is not None:
-            queryset = queryset.filter(username=username)
-        return queryset

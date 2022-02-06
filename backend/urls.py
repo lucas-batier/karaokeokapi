@@ -30,6 +30,6 @@ urlpatterns = [
     path('api/login/', authtoken_views.obtain_auth_token),
     path('api/register/', views.RegisterView.as_view()),
     path('api/current_user/', views.RetrieveCurrentUserView.as_view()),
-    path('api/users/', views.ListUserView.as_view()),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('api/songs/search', views.ListSongSearchView.as_view()),
 ]
