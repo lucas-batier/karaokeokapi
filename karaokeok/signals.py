@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 
 from django_rest_passwordreset.signals import reset_password_token_created
 
-from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER
+from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER, APP_URL
 
 
 @receiver(reset_password_token_created)
@@ -26,6 +26,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
             FRONT_APP_URL,
             reset_password_token.key),
         'front_app_url': FRONT_APP_URL,
+        'app_url': APP_URL,
     }
 
     # render email text
@@ -33,7 +34,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     email_plaintext_message = render_to_string('email/reset_password.txt', context)
 
     message = EmailMultiAlternatives(
-        subject="{title} 🎤 Réinitialisation de mot de passe".format(title="KaraokeOK"),
+        subject="Réinitialisation mot de passe - {title} 🎤".format(title="KaraokeOK"),
         body=email_plaintext_message,
         from_email='Fred de KaraokeOK',
         to=[reset_password_token.user.email]
