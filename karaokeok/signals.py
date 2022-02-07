@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 
 from django_rest_passwordreset.signals import reset_password_token_created
 
-from backend.settings import FRONT_APP_URL
+from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER
 
 
 @receiver(reset_password_token_created)

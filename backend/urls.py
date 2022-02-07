@@ -19,7 +19,7 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken import views as authtoken_views
 
-from backend import settings
+from backend.settings import MEDIA_URL, MEDIA_ROOT
 from karaokeok import views
 
 router = routers.DefaultRouter()
@@ -34,4 +34,4 @@ urlpatterns = [
     path('api/register/', views.RegisterView.as_view()),
     path('api/current_user/', views.RetrieveCurrentUserView.as_view()),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)
