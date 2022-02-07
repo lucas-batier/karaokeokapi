@@ -34,6 +34,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG')
 ALLOWED_HOSTS = ['karaokeokapi.herokuapp.com']
 
 # Environment variables
+APP_URL = os.environ.get('APP_URL')
 FRONT_APP_URL = os.environ.get('FRONT_APP_URL')
 
 # Application definition
@@ -135,6 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = 'staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
