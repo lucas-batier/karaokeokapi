@@ -1,5 +1,6 @@
 import uuid
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -23,3 +24,16 @@ class Song(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.title, self.artist.name)
+
+
+class Proposal(models.Model):
+    uuid = models.UUIDField(unique=True, default=uuid.uuid4)
+    youtube_url = models.CharField(max_length=255)
+    proposed_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    proposed_at = models.DateTimeField(default=timezone.now)
+    rejected = models.BooleanField(default=False)
+    # if there is a song, the proposal was accepted and added to the database
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return '%s proposed: %s' % (self.proposed_by.username, self.youtube_url)

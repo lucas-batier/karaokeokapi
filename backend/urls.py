@@ -23,8 +23,9 @@ from backend.settings import MEDIA_URL, MEDIA_ROOT
 from karaokeok import views
 
 router = routers.DefaultRouter()
-router.register(r'songs', views.SongView, 'song')
 router.register(r'artists', views.ArtistView, 'artist')
+router.register(r'songs', views.SongView, 'song')
+router.register(r'proposals', views.ProposalView, 'proposal')
 router.register(r'users', views.UserView, 'user')
 
 urlpatterns = [

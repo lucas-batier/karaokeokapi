@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 
 from .filters import CaseInsensitiveOrderingFilter
-from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer
-from .models import Artist, Song
+from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer, ProposalSerializer
+from .models import Artist, Song, Proposal
 
 
 class ArtistView(viewsets.ModelViewSet):
@@ -28,6 +28,12 @@ class SongView(viewsets.ModelViewSet):
     ordering_fields = ['title', 'created_at', 'artist__name']
     filterset_fields = ['artist', 'featuring_artist']
     search_fields = ['title__unaccent', 'artist__name__unaccent', 'featuring_artist__name__unaccent']
+
+
+class ProposalView(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    serializer_class = ProposalSerializer
+    queryset = Proposal.objects.all().prefetch_related('proposed_by', 'song')
 
 
 class RegisterView(generics.CreateAPIView):

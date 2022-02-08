@@ -4,7 +4,7 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 
-from .models import Artist, Song
+from .models import Artist, Song, Proposal
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -68,6 +68,25 @@ class SongSerializer(serializers.ModelSerializer):
         model = Song
         fields = ('id', 'uuid', 'title', 'artist', 'featuring_artist', 'youtube_url', 'thumbnail_url', 'created_at')
         read_only_fields = ('created_at', )
+
+
+class ProposalSerializer(serializers.ModelSerializer):
+    proposed_by = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        read_only=False,
+        slug_field='username'
+    )
+
+    song = serializers.SlugRelatedField(
+        queryset=Song.objects.all(),
+        read_only=False,
+        slug_field='title'
+    )
+
+    class Meta:
+        model = Proposal
+        fields = ('id', 'uuid', 'youtube_url', 'proposed_by', 'proposed_at', 'rejected', 'song')
+        read_only_fields = ('proposed_at', )
 
 
 class UserSerializer(serializers.ModelSerializer):
