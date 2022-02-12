@@ -34,6 +34,7 @@ class ProposalView(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = ProposalSerializer
     queryset = Proposal.objects.all().prefetch_related('proposed_by', 'song')
+    filterset_fields = ['proposed_by', 'rejected', 'song']
 
 
 class RegisterView(generics.CreateAPIView):

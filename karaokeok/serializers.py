@@ -80,7 +80,8 @@ class ProposalSerializer(serializers.ModelSerializer):
     song = serializers.SlugRelatedField(
         queryset=Song.objects.all(),
         read_only=False,
-        slug_field='title'
+        slug_field='title',
+        required=False
     )
 
     class Meta:
