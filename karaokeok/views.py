@@ -6,8 +6,9 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 
 from .filters import CaseInsensitiveOrderingFilter
-from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer, ProposalSerializer
-from .models import Artist, Song, Proposal
+from .serializers import ArtistSerializer, SongSerializer, RegisterSerializer, UserSerializer, ProposalSerializer, \
+    FeedbackSerializer
+from .models import Artist, Song, Proposal, Feedback
 
 
 class ArtistView(viewsets.ModelViewSet):
@@ -31,10 +32,17 @@ class SongView(viewsets.ModelViewSet):
 
 
 class ProposalView(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = ProposalSerializer
-    queryset = Proposal.objects.all().prefetch_related('proposed_by', 'song')
-    filterset_fields = ['proposed_by', 'rejected', 'song']
+    queryset = Proposal.objects.all().prefetch_related('created_by', 'song')
+    filterset_fields = ['created_by', 'rejected', 'song']
+
+
+class FeedbackView(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all().prefetch_related('created_by')
+    filterset_fields = ['created_by', 'treated']
 
 
 class RegisterView(generics.CreateAPIView):

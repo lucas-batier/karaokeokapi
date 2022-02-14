@@ -26,6 +26,7 @@ router = routers.DefaultRouter()
 router.register(r'artists', views.ArtistView, 'artist')
 router.register(r'songs', views.SongView, 'song')
 router.register(r'proposals', views.ProposalView, 'proposal')
+router.register(r'feedbacks', views.FeedbackView, 'feedback')
 router.register(r'users', views.UserView, 'user')
 
 urlpatterns = [

@@ -4,13 +4,13 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 
-from .models import Artist, Song, Proposal
+from .models import Artist, Song, Proposal, Feedback
 
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        validators=[UniqueValidator(queryset=User.objects.all())],
     )
 
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -53,7 +53,7 @@ class SongSerializer(serializers.ModelSerializer):
     artist = serializers.SlugRelatedField(
         queryset=Artist.objects.all(),
         read_only=False,
-        slug_field='name'
+        slug_field='name',
     )
 
     featuring_artist = serializers.SlugRelatedField(
@@ -61,7 +61,7 @@ class SongSerializer(serializers.ModelSerializer):
         queryset=Artist.objects.all(),
         read_only=False,
         slug_field='name',
-        default=[]
+        default=[],
     )
 
     class Meta:
@@ -71,23 +71,37 @@ class SongSerializer(serializers.ModelSerializer):
 
 
 class ProposalSerializer(serializers.ModelSerializer):
-    proposed_by = serializers.SlugRelatedField(
+    created_by = serializers.SlugRelatedField(
         queryset=User.objects.all(),
         read_only=False,
-        slug_field='username'
+        slug_field='username',
     )
 
     song = serializers.SlugRelatedField(
         queryset=Song.objects.all(),
         read_only=False,
         slug_field='title',
-        required=False
+        required=False,
     )
 
     class Meta:
         model = Proposal
-        fields = ('id', 'uuid', 'youtube_url', 'proposed_by', 'proposed_at', 'rejected', 'song')
-        read_only_fields = ('proposed_at', )
+        fields = ('id', 'uuid', 'youtube_url', 'created_by', 'created_at', 'rejected', 'song')
+        read_only_fields = ('created_at', )
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    created_by = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        read_only=False,
+        slug_field='username',
+        required=False,
+    )
+
+    class Meta:
+        model = Feedback
+        fields = ('id', 'uuid', 'comment', 'created_by', 'created_at', 'treated', 'response')
+        read_only_fields = ('created_at', )
 
 
 class UserSerializer(serializers.ModelSerializer):
