@@ -36,7 +36,7 @@ class Proposal(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.uuid
+        return str(self.uuid)
 
 
 class Feedback(models.Model):
@@ -48,4 +48,4 @@ class Feedback(models.Model):
     response = models.CharField(max_length=2048, blank=True)
 
     def __str__(self):
-        return self.uuid
+        return str(self.uuid)
