@@ -1,3 +1,5 @@
 {{first_name}} {{last_name}} ({{username}}) a envoyé une proposition ({{uuid}}) le {{date}} :
 
 {{youtube_url}}
+
+{{song_body}}

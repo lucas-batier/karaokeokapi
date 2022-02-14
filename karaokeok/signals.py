@@ -80,10 +80,26 @@ def create_feedback(sender, instance, *args, **kwargs):
 @receiver(post_save, sender=Proposal)
 def create_proposal(sender, instance, *args, **kwargs):
     """
-    Send an email to the superuser while a user submit a feedback
+    Send an email to the superuser while a user submit a proposal
     :type sender: Proposal
     :type instance: Proposal
     """
+    # @todo fetch youtube_song with library
+    youtube_song = None
+
+    if youtube_song:
+        song_body = '''
+            {
+                "artist": "%(artist)s",
+                "title": "%(title)s",
+                "featuring_artist": [],
+                "youtube_url": "%(youtube_url)s",
+                "thumbnail_url": "%(thumbnail_url)s"
+            }
+        ''' % {"artist": 'ahahah', "title": 'coucou', "youtube_url": instance.youtube_url, "thumbnail_url": 'coucou'}
+    else:
+        song_body = 'Not found on YouTube'
+
     # send an e-mail to the superuser
     context = {
         'first_name': instance.created_by.first_name,
@@ -92,6 +108,7 @@ def create_proposal(sender, instance, *args, **kwargs):
         'uuid': instance.uuid,
         'youtube_url': instance.youtube_url,
         'date': instance.created_at,
+        'song_body': song_body,
     }
 
     # render email text
