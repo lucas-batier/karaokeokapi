@@ -10,7 +10,7 @@ token = sys.argv[2]
 
 # Delete artists
 response = requests.get(
-    '%s/api/artists/' % host,
+    '%s/api/artists/?limit=10000' % host,
     headers={"Authorization": "Token %s" % token},
 )
 
@@ -29,7 +29,7 @@ for artist in artists:
 
 # Delete songs
 response = requests.get(
-    '%s/api/songs/' % host,
+    '%s/api/songs/?limit=10000' % host,
     headers={"Authorization": "Token %s" % token},
 )
 
