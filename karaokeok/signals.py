@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django_rest_passwordreset.signals import reset_password_token_created
 
 from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER, APP_URL
+from karaokeok import service
 from karaokeok.models import Feedback, Proposal
 
 
@@ -84,10 +85,16 @@ def create_proposal(sender, instance, *args, **kwargs):
     :type sender: Proposal
     :type instance: Proposal
     """
-    # @todo fetch youtube_song with library
-    youtube_song = None
+    youtube_info = service.fetch_youtube_info(instance.youtube_url)
 
-    if youtube_song:
+    print(youtube_info)
+
+    artist = youtube_info.get("artist", '')
+    title = youtube_info.get("title", '')
+    youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
+    thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
+
+    if youtube_info:
         song_body = '''
             {
                 "artist": "%(artist)s",
@@ -96,7 +103,12 @@ def create_proposal(sender, instance, *args, **kwargs):
                 "youtube_url": "%(youtube_url)s",
                 "thumbnail_url": "%(thumbnail_url)s"
             }
-        ''' % {"artist": 'ahahah', "title": 'coucou', "youtube_url": instance.youtube_url, "thumbnail_url": 'coucou'}
+        ''' % {
+            "artist": artist,
+            "title": title,
+            "youtube_url": youtube_url,
+            "thumbnail_url": thumbnail_url,
+        }
     else:
         song_body = 'Not found on YouTube'
 
