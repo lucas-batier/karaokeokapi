@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['karaokeokapi.herokuapp.com']
 # Environment variables
 APP_URL = os.environ.get('APP_URL')
 FRONT_APP_URL = os.environ.get('FRONT_APP_URL')
+GENIUS_ACCESS_TOKEN = os.environ.get('GENIUS_ACCESS_TOKEN')
 
 # Application definition
 

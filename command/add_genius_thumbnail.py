@@ -4,6 +4,8 @@ import sys
 
 from lyricsgenius import Genius
 
+from backend.settings import GENIUS_ACCESS_TOKEN
+
 if len(sys.argv) < 2:
     print('ERROR: A file name is required')
 
@@ -11,7 +13,7 @@ file_name = sys.argv[1]
 with open(file_name) as file:
     rows = json.load(file)
 
-genius_api = Genius('piPUx0YMBuewgxG2Tfawxh2qVyqG2D1J_lbSWTtnuqNCzlXwl3h5OAHCY7oVtFwe', timeout=10, retries=3)
+genius_api = Genius(GENIUS_ACCESS_TOKEN, timeout=10, retries=3)
 failed_rows = []
 for row in rows:
     genius_song = genius_api.search_song(title=row["title"], artist=row["artist"])
