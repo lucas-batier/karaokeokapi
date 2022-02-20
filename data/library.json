@@ -8,7 +8,7 @@
   },
   {
     "artist": "Thierry Pastor",
-    "title": "Le coup de folie",
+    "title": "Coup de folie",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=BSLmcAJXaDM"
   },
@@ -87,14 +87,14 @@
     "title": "Ce rêve bleu",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=ioPLewc1cFE",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F0d36e7c5fe3a51bf6c079b8c6b7ccd48.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F8b08f31e06da6b0a7aef13aa0eeabe41.300x300x1.jpg"
   },
   {
     "artist": "Aladdin",
     "title": "Prince Ali",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=kFEeyfTqXJM",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fe8fecc6ff2e16863471d7ea234eb7e4d.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F8b08f31e06da6b0a7aef13aa0eeabe41.300x300x1.jpg"
   },
   {
     "artist": "Alexandra Burke",
@@ -563,14 +563,14 @@
     "title": "Alphonse Brown",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=ujEfOreUnp8",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fs3.amazonaws.com%2Frapgenius%2F1374036251_Marcel_Proust_1900-2.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F34ba4872fef9b70dd150f01c4e2c93ee.300x300x1.jpg"
   },
   {
     "artist": "Fatal",
     "title": "Ce matin va être une pure soirée (Voix)",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=5lFDDe20gNU",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff4b5821553f3bb3cbb0b93abf03ae231.300x200x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fce49a2e15034ea9af2283aeece0ffbe4.300x300x1.jpg"
   },
   {
     "artist": "Fatal",
@@ -587,15 +587,15 @@
     "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fa419bd0f61d7bf85ec4c4b6940d49247.300x300x1.jpg"
   },
   {
-    "artist": "Folklore International",
+    "artist": "Traditionel",
     "title": "Bella ciao",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=RTwPUnN1Q6g",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F07c419a88aa818cd755d022aaeb7bdda.240x350x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F82689a315a982688130a6bc9ce233227.300x300x1.jpg"
   },
   {
     "artist": "Francis Cabrel",
-    "title": "A l'encre de tes yeux",
+    "title": "L'encre de tes yeux",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=1Jic65zIJT8",
     "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fe79afa2833198114646f48d297965f39.235x235x1.jpg"
@@ -703,7 +703,7 @@
     "title": "Reste",
     "featuring_artist": ["Sting"],
     "youtube_url": "https://www.youtube.com/watch?v=PUpt5aQ_4To",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F50cd74a2a62a92f36d3a7259bc44be8e.300x300x1.png"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F6faf008150c2e52b73d0640b22c0acde.300x300x1.png"
   },
   {
     "artist": "Gims",
@@ -927,7 +927,7 @@
     "title": "J'ai oublié de vivre",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=xYyeiD3blGM",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F118fe260d70ff19d6870f3974aa2aa4a.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F54a9135f1f382e96fd6ce6405e17d682.300x300x1.jpg"
   },
   {
     "artist": "Johnny Hallyday",
@@ -952,10 +952,10 @@
   },
   {
     "artist": "Johnny Hallyday",
-    "title": "Oh Marie",
+    "title": "Marie",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=YJkYAWwVQkA",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F4bb0fa72fa5d2c3d042f79cdd3a49121.200x200x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F1cc2123ff8fc1d62ae3635b9935d83ae.300x300x1.jpg"
   },
   {
     "artist": "Johnny Hallyday",
@@ -973,7 +973,7 @@
   },
   {
     "artist": "Kana",
-    "title": "Ma plantation",
+    "title": "Plantation",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=8Ag-ut8psgo"
   },
@@ -1017,70 +1017,70 @@
     "title": "C'est la fête",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=Q-2kT-u6Cno",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F695aa29b699ae445335b497910f733aa.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F30de02a1f7d3b67a566841e61dc73a5d.300x300x1.jpg"
   },
   {
     "artist": "La belle et la bête",
     "title": "Histoire éternelle",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=5mR1CjoyD1c",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fc974735e7fdf495c6c41c32216049e25.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F30de02a1f7d3b67a566841e61dc73a5d.300x300x1.jpg"
   },
   {
     "artist": "La reine des neiges",
     "title": "Je voudrais un bonhomme de neige",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=koCD7LDqRcs",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F31f62f0a585659f3365edcee71202756.300x218x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F746f6fbc2002f1c7c09e4a20d9e61aec.300x300x1.jpg"
   },
   {
     "artist": "La reine des neiges",
     "title": "Libérée, délivrée",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=eI-2XcF-3KU",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F2210c3aa490120090c1b0ac648416e42.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F746f6fbc2002f1c7c09e4a20d9e61aec.300x300x1.jpg"
   },
   {
     "artist": "Le livre de la jungle",
     "title": "Être un homme comme vous",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=l1gncVP72BI",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F5a1cde05a992a54b82248f2c444aa0a8.300x111x1.png"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F375ff2a865b69ce67b44fc2b327febcb.300x300x1.png"
   },
   {
     "artist": "Le livre de la jungle",
     "title": "Il en faut peut pour être heureux",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=ios5ZOdj04c",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fa11b5d7d3995a9db61b9e59680a6859d.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F375ff2a865b69ce67b44fc2b327febcb.300x300x1.png"
   },
   {
     "artist": "Le roi lion",
     "title": "Hakuna matata",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=m8kpGV1fN0o",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F9c5258303bf40444ad2887cebc3f8d1d.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F0a81af7e355c7b07cd8199688fd67ff2.300x300x1.jpg"
   },
   {
     "artist": "Le roi lion",
     "title": "Je voudrais déjà être roi",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=-p-vRU6ONVA",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F30347b2d828055518657279572312651.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F0a81af7e355c7b07cd8199688fd67ff2.300x300x1.jpg"
   },
   {
     "artist": "Le roi lion",
     "title": "L'histoire de la vie",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=mDwPjJ9A_AY",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F07ca658009bdba2090e6c01b32669edc.300x437x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F0a81af7e355c7b07cd8199688fd67ff2.300x300x1.jpg"
   },
   {
     "artist": "Les aristochats",
     "title": "Tout le monde veut devenir un cat",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=loMcHBo6qeE",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F8c6fa02b5674fe8142e57446fe97cc0b.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ffd771fc5820e13d6a95df10c52e23220.300x300x1.jpg"
   },
   {
     "artist": "Lilicub",
@@ -1107,14 +1107,14 @@
     "title": "Shallow",
     "featuring_artist": ["Bradley Cooper"],
     "youtube_url": "https://www.youtube.com/watch?v=BxSDKYV4Cfk",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F8e9fd3aae2873cf19934f0eff956a507.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Ff54559c1bf36b948f8a5d36f804fc840.300x300x1.jpg"
   },
   {
     "artist": "Lomepal",
     "title": "1000°C",
     "featuring_artist": ["Roméo Elvis"],
     "youtube_url": "https://www.youtube.com/watch?v=WbY1rI6WxSE",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F50cd74a2a62a92f36d3a7259bc44be8e.300x300x1.png"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F284554aabb922b26bd8b0d558b240ca0.300x300x1.jpg"
   },
   {
     "artist": "Louane",
@@ -1351,7 +1351,8 @@
     "artist": "Pocahontas",
     "title": "L'air du vent",
     "featuring_artist": [],
-    "youtube_url": "https://www.youtube.com/watch?v=ktELiwP9RPg"
+    "youtube_url": "https://www.youtube.com/watch?v=ktELiwP9RPg",
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F26a77c6e0aedcf9641a377e087d0303d.300x300x1.jpg"
   },
   {
     "artist": "Queen",
@@ -1693,7 +1694,8 @@
     "artist": "Vianney",
     "title": "La même",
     "featuring_artist": ["Gims"],
-    "youtube_url": "https://www.youtube.com/watch?v=4FiTTrLbvLM"
+    "youtube_url": "https://www.youtube.com/watch?v=4FiTTrLbvLM",
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F8dc75c7eb3d7d3feb01a4f9ab39338af.300x300x1.jpg"
   },
   {
     "artist": "Vianney",
@@ -1713,7 +1715,8 @@
     "artist": "Yannick",
     "title": "Ces soirées-là",
     "featuring_artist": [],
-    "youtube_url": "https://www.youtube.com/watch?v=bhowsicDPjo"
+    "youtube_url": "https://www.youtube.com/watch?v=bhowsicDPjo",
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fdd3ac17625eecaa3209f97fe132d5d21.300x300x1.jpg"
   },
   {
     "artist": "Yodelice",
@@ -1818,7 +1821,7 @@
     "title": "Rockolletion",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=tVOsTiq4gVo",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F36c2c05c3329e2a1724100bc49fb90ed.300x300x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fc84a3d7cbd00242b939d851554045872.300x300x1.jpg"
   },
   {
     "artist": "Calogero",
@@ -1892,16 +1895,17 @@
   },
   {
     "artist": "Nekfeu",
-    "title": "Reuf version Five (Voix)",
+    "title": "Reuf (Version Five) (Voix)",
     "featuring_artist": [],
     "youtube_url": "https://www.youtube.com/watch?v=s94jl_f1TQs",
-    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F5da0f0d0e50c03b0d8c43b7eedbdc6f1.300x145x1.jpg"
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F2e66c0edc34215be02e6f40620fcaba0.300x300x1.jpg"
   },
   {
     "artist": "Sexion d'assaut",
     "title": "Ma direction (Voix)",
     "featuring_artist": [],
-    "youtube_url": "https://www.youtube.com/watch?v=Y53qcfQzXl4"
+    "youtube_url": "https://www.youtube.com/watch?v=Y53qcfQzXl4",
+    "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fe6a310ef6fa3c99b002a9dd528323e6f.300x300x1.jpg"
   },
   {
     "artist": "Céline Dion",
