@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.template.loader import render_to_string
 
 from django_rest_passwordreset.signals import reset_password_token_created
+from youtube_dl import DownloadError
 
 from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER, APP_URL
 from karaokeok import service
@@ -85,31 +86,32 @@ def create_proposal(sender, instance, *args, **kwargs):
     :type sender: Proposal
     :type instance: Proposal
     """
-    youtube_info = service.fetch_youtube_info(instance.youtube_url)
+    try:
+        youtube_info = service.fetch_youtube_info(instance.youtube_url)
 
-    print(youtube_info)
+        artist = youtube_info.get("artist", '')
+        title = youtube_info.get("title", '')
+        youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
+        thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
 
-    artist = youtube_info.get("artist", '')
-    title = youtube_info.get("title", '')
-    youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
-    thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
-
-    if youtube_info:
-        song_body = '''
-            {
-                "artist": "%(artist)s",
-                "title": "%(title)s",
-                "featuring_artist": [],
-                "youtube_url": "%(youtube_url)s",
-                "thumbnail_url": "%(thumbnail_url)s"
+        if youtube_info:
+            song_body = '''
+                {
+                    "artist": "%(artist)s",
+                    "title": "%(title)s",
+                    "featuring_artist": [],
+                    "youtube_url": "%(youtube_url)s",
+                    "thumbnail_url": "%(thumbnail_url)s"
+                }
+            ''' % {
+                "artist": artist,
+                "title": title,
+                "youtube_url": youtube_url,
+                "thumbnail_url": thumbnail_url,
             }
-        ''' % {
-            "artist": artist,
-            "title": title,
-            "youtube_url": youtube_url,
-            "thumbnail_url": thumbnail_url,
-        }
-    else:
+        else:
+            song_body = 'Not found on YouTube'
+    except DownloadError:
         song_body = 'Not found on YouTube'
 
     # send an e-mail to the superuser

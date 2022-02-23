@@ -34,7 +34,7 @@ class SongView(viewsets.ModelViewSet):
 class ProposalView(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProposalSerializer
-    queryset = Proposal.objects.all().prefetch_related('created_by', 'song')
+    queryset = Proposal.objects.all()
     ordering_fields = ['created_at']
     filterset_fields = ['created_by', 'rejected', 'song']
 

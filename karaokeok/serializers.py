@@ -77,13 +77,6 @@ class ProposalSerializer(serializers.ModelSerializer):
         slug_field='username',
     )
 
-    song = serializers.SlugRelatedField(
-        queryset=Song.objects.all(),
-        read_only=False,
-        slug_field='title',
-        required=False,
-    )
-
     class Meta:
         model = Proposal
         fields = ('id', 'uuid', 'youtube_url', 'created_by', 'created_at', 'rejected', 'song')
