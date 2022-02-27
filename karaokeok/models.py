@@ -34,7 +34,7 @@ class Proposal(models.Model):
     rejected = models.BooleanField(default=False)
     # if there is a song, the proposal was accepted and added to the database
     song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, blank=True)
-    updated_at = models.DateTimeField(blank=True)
+    updated_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return str(self.uuid)
