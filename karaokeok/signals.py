@@ -86,32 +86,29 @@ def create_proposal(sender, instance, *args, **kwargs):
     :type sender: Proposal
     :type instance: Proposal
     """
-    try:
-        youtube_info = service.fetch_youtube_info(instance.youtube_url)
+    youtube_info = service.fetch_youtube_info(instance.youtube_url)
 
-        artist = youtube_info.get("artist", '')
-        title = youtube_info.get("title", '')
-        youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
-        thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
+    artist = youtube_info.get("artist", '')
+    title = youtube_info.get("title", '')
+    youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
+    thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
 
-        if youtube_info:
-            song_body = '''
-                {
-                    "artist": "%(artist)s",
-                    "title": "%(title)s",
-                    "featuring_artist": [],
-                    "youtube_url": "%(youtube_url)s",
-                    "thumbnail_url": "%(thumbnail_url)s"
-                }
-            ''' % {
-                "artist": artist,
-                "title": title,
-                "youtube_url": youtube_url,
-                "thumbnail_url": thumbnail_url,
+    if youtube_info:
+        song_body = '''
+            {
+                "artist": "%(artist)s",
+                "title": "%(title)s",
+                "featuring_artist": [],
+                "youtube_url": "%(youtube_url)s",
+                "thumbnail_url": "%(thumbnail_url)s"
             }
-        else:
-            song_body = 'Not found on YouTube'
-    except DownloadError:
+        ''' % {
+            "artist": artist,
+            "title": title,
+            "youtube_url": youtube_url,
+            "thumbnail_url": thumbnail_url,
+        }
+    else:
         song_body = 'Not found on YouTube'
 
     # send an e-mail to the superuser
