@@ -1321,7 +1321,7 @@ library = [
     },
     {
         "artist": "Patrick Bruel",
-        "title": "Au café des délices",
+        "title": "Au Café des Délices",
         "featuring_artist": [],
         "youtube_url": "https://www.youtube.com/watch?v=0PnTPsTdXa8",
         "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F70bbfb5ed0a4664a713e6187dc6f7ba3.300x300x1.jpg"
@@ -1587,7 +1587,7 @@ library = [
     },
     {
         "artist": "The Beatles",
-        "title": "Hey jude",
+        "title": "Hey Jude",
         "featuring_artist": [],
         "youtube_url": "https://www.youtube.com/watch?v=enmHYsoCMkQ",
         "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F537342a11e2455300f30464e88dd02f0.300x300x1.jpg"
@@ -1818,7 +1818,7 @@ library = [
     },
     {
         "artist": "Laurent Voulzy",
-        "title": "Rockolletion",
+        "title": "Rockollection",
         "featuring_artist": [],
         "youtube_url": "https://www.youtube.com/watch?v=tVOsTiq4gVo",
         "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2Fc84a3d7cbd00242b939d851554045872.300x300x1.jpg"
@@ -1853,7 +1853,7 @@ library = [
     },
     {
         "artist": "Alain Souchon",
-        "title": "Quand j'serai ko",
+        "title": "Quand j'serai KO",
         "featuring_artist": [],
         "youtube_url": "https://www.youtube.com/watch?v=Y_QuRqCV2D4",
         "thumbnail_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F2f33c39496d2824ce2db75af63783a21.300x300x1.jpg"
