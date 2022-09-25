@@ -5,7 +5,6 @@ from django.dispatch import receiver
 from django.template.loader import render_to_string
 
 from django_rest_passwordreset.signals import reset_password_token_created
-from youtube_dl import DownloadError
 
 from backend.settings import FRONT_APP_URL, EMAIL_HOST_USER, APP_URL
 from karaokeok import service
@@ -41,7 +40,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     message = EmailMultiAlternatives(
         subject="Réinitialisation mot de passe - {title} 🎤".format(title="KaraokeOK"),
         body=email_plaintext_message,
-        from_email='Fred de KaraokeOK',
+        from_email=EMAIL_HOST_USER,
         to=[reset_password_token.user.email]
     )
     message.attach_alternative(email_html_message, "text/html")
