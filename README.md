@@ -18,3 +18,16 @@ docker-compose exec api python manage.py migrate
 ```shell
 docker-compose exec api python manage.py createsuperuser
 ```
+
+## Features
+
+### Proposal
+
+When a user submit a proposal, the youtube video is analysed and Genius lyrics are fetched if it is possible. Then, a 
+mail is sent to all the user who have the permission 'can_receive_proposal'.
+
+### Feedback
+
+Feedback is only available on beta versions.
+
+When a feedback is submitted, a mail is sent to all the user who have the permission 'can_receive_feedback'.

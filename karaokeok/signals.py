@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
+from django.db.models import Q
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 
@@ -48,88 +49,95 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
 
 @receiver(post_save, sender=Feedback)
-def create_feedback(sender, instance, *args, **kwargs):
+def send_feedback_by_email(sender, instance, *args, **kwargs):
     """
-    Send an email to the superuser while a user submit a feedback
+    Send an email to user who have the permission while a feedback is submitted
     :type sender: Feedback
     :type instance: Feedback
     """
-    # send an e-mail to the superuser
-    context = {
-        'first_name': instance.created_by.first_name if instance.created_by else 'Un utilisateur inconnu',
-        'last_name': instance.created_by.last_name if instance.created_by else '',
-        'username': instance.created_by.username if instance.created_by else '',
-        'uuid': instance.uuid,
-        'comment': instance.comment,
-        'date': instance.created_at,
-    }
 
-    # render email text
-    email_html_message = render_to_string('email/feedback.html', context)
-    email_plaintext_message = render_to_string('email/feedback.txt', context)
+    perm = Permission.objects.get(codename='can_receive_feedback')
+    users = User.objects.filter(Q(groups__permissions=perm) | Q(user_permissions=perm)).distinct()
 
-    message = EmailMultiAlternatives(
-        subject="Avis reçu".format(title="KaraokeOK"),
-        body=email_plaintext_message,
-        from_email='KaraokeOK admin',
-        to=User.objects.filter(is_superuser=True).values_list('email')[0]
-    )
-    message.attach_alternative(email_html_message, "text/html")
-    message.send()
+    if users:
+        context = {
+            'first_name': instance.created_by.first_name if instance.created_by else 'Un utilisateur inconnu',
+            'last_name': instance.created_by.last_name if instance.created_by else '',
+            'username': instance.created_by.username if instance.created_by else '',
+            'uuid': instance.uuid,
+            'comment': instance.comment,
+            'date': instance.created_at,
+        }
+
+        email_html_message = render_to_string('email/feedback.html', context)
+        email_plaintext_message = render_to_string('email/feedback.txt', context)
+
+        to_emails = [user.email for user in users]
+        message = EmailMultiAlternatives(
+            subject="Avis reçu - KaraokeOK",
+            body=email_plaintext_message,
+            from_email='KaraokeOK automation',
+            to=to_emails,
+        )
+        message.attach_alternative(email_html_message, "text/html")
+        message.send()
 
 
 @receiver(post_save, sender=Proposal)
-def create_proposal(sender, instance, *args, **kwargs):
+def send_proposal_by_email(sender, instance, *args, **kwargs):
     """
-    Send an email to the superuser while a user submit a proposal
+    Send an email to user who have the permission while a user submit a proposal
     :type sender: Proposal
     :type instance: Proposal
     """
-    youtube_info = service.fetch_youtube_info(instance.youtube_url)
+    perm = Permission.objects.get(codename='can_receive_proposal')
+    users = User.objects.filter(Q(groups__permissions=perm) | Q(user_permissions=perm)).distinct()
 
-    artist = youtube_info.get("artist", '')
-    title = youtube_info.get("title", '')
-    youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
-    thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
+    if users:
+        youtube_info = service.fetch_youtube_info(instance.youtube_url)
 
-    if youtube_info:
-        song_body = '''
-            {
-                "artist": "%(artist)s",
-                "title": "%(title)s",
-                "featuring_artist": [],
-                "youtube_url": "%(youtube_url)s",
-                "thumbnail_url": "%(thumbnail_url)s"
+        artist = youtube_info.get("artist", '')
+        title = youtube_info.get("title", '')
+        youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
+        thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
+
+        if youtube_info:
+            song_body = '''
+                {
+                    "artist": "%(artist)s",
+                    "title": "%(title)s",
+                    "featuring_artist": [],
+                    "youtube_url": "%(youtube_url)s",
+                    "thumbnail_url": "%(thumbnail_url)s"
+                }
+            ''' % {
+                "artist": artist,
+                "title": title,
+                "youtube_url": youtube_url,
+                "thumbnail_url": thumbnail_url,
             }
-        ''' % {
-            "artist": artist,
-            "title": title,
-            "youtube_url": youtube_url,
-            "thumbnail_url": thumbnail_url,
+        else:
+            song_body = 'Not found on YouTube'
+
+        context = {
+            'first_name': instance.created_by.first_name,
+            'last_name': instance.created_by.last_name,
+            'username': instance.created_by.username,
+            'uuid': instance.uuid,
+            'youtube_url': instance.youtube_url,
+            'date': instance.created_at,
+            'song_body': song_body,
         }
-    else:
-        song_body = 'Not found on YouTube'
 
-    # send an e-mail to the superuser
-    context = {
-        'first_name': instance.created_by.first_name,
-        'last_name': instance.created_by.last_name,
-        'username': instance.created_by.username,
-        'uuid': instance.uuid,
-        'youtube_url': instance.youtube_url,
-        'date': instance.created_at,
-        'song_body': song_body,
-    }
+        email_html_message = render_to_string('email/proposal.html', context)
+        email_plaintext_message = render_to_string('email/proposal.txt', context)
 
-    # render email text
-    email_html_message = render_to_string('email/proposal.html', context)
-    email_plaintext_message = render_to_string('email/proposal.txt', context)
-
-    message = EmailMultiAlternatives(
-        subject="Proposition reçu".format(title="KaraokeOK"),
-        body=email_plaintext_message,
-        from_email='KaraokeOK admin',
-        to=User.objects.filter(is_superuser=True).values_list('email')[0]
-    )
-    message.attach_alternative(email_html_message, "text/html")
-    message.send()
+        to_emails = [user.email for user in users]
+        message = EmailMultiAlternatives(
+            subject="Proposition reçu - KaraokeOK",
+            body=email_plaintext_message,
+            from_email='KaraokeOK automation',
+            to=to_emails,
+        )
+        message.attach_alternative(email_html_message, "text/html")
+        message.send()
