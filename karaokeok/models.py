@@ -31,6 +31,7 @@ class Proposal(models.Model):
     youtube_url = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
+    song_info = models.JSONField(null=True, blank=True, help_text='Song info to be added in the library.json file')
     rejected = models.BooleanField(default=False)
     # if there is a song, the proposal was accepted and added to the database
     song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, blank=True)

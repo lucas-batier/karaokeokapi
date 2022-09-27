@@ -79,7 +79,7 @@ class ProposalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Proposal
-        fields = ('id', 'uuid', 'youtube_url', 'created_by', 'created_at', 'rejected', 'song', 'updated_at')
+        fields = ('id', 'uuid', 'youtube_url', 'created_by', 'created_at', 'song_info', 'rejected', 'song', 'updated_at')
         read_only_fields = ('created_at', )
 
 

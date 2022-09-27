@@ -30,3 +30,20 @@ def fetch_genius_thumbnail_url(title, artist):
         return thumbnail_url
     except Exception as exception:
         raise exception
+
+
+def create_song_info(youtube_url):
+    youtube_info = fetch_youtube_info(youtube_url)
+    artist = youtube_info.get("artist", '')
+    title = youtube_info.get("title", '')
+    youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
+    thumbnail_url = fetch_genius_thumbnail_url(title, artist)
+    song_info = {
+        "artist": artist,
+        "title": title,
+        "featuring_artist": [],
+        "youtube_url": youtube_url,
+        "thumbnail_url": thumbnail_url,
+    }
+
+    return song_info

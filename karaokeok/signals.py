@@ -94,31 +94,6 @@ def send_proposal_by_email(sender, instance, *args, **kwargs):
     users = User.objects.filter(Q(groups__permissions=perm) | Q(user_permissions=perm)).distinct()
 
     if users:
-        youtube_info = service.fetch_youtube_info(instance.youtube_url)
-
-        artist = youtube_info.get("artist", '')
-        title = youtube_info.get("title", '')
-        youtube_url = 'https://www.youtube.com/watch?v=%s' % youtube_info.get("id", '')
-        thumbnail_url = service.fetch_genius_thumbnail_url(title, artist)
-
-        if youtube_info:
-            song_body = '''
-                {
-                    "artist": "%(artist)s",
-                    "title": "%(title)s",
-                    "featuring_artist": [],
-                    "youtube_url": "%(youtube_url)s",
-                    "thumbnail_url": "%(thumbnail_url)s"
-                }
-            ''' % {
-                "artist": artist,
-                "title": title,
-                "youtube_url": youtube_url,
-                "thumbnail_url": thumbnail_url,
-            }
-        else:
-            song_body = 'Not found on YouTube'
-
         context = {
             'first_name': instance.created_by.first_name,
             'last_name': instance.created_by.last_name,
@@ -126,7 +101,7 @@ def send_proposal_by_email(sender, instance, *args, **kwargs):
             'uuid': instance.uuid,
             'youtube_url': instance.youtube_url,
             'date': instance.created_at,
-            'song_body': song_body,
+            'song_info': instance.song_info,
         }
 
         email_html_message = render_to_string('email/proposal.html', context)
